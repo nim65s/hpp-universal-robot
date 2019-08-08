@@ -19,7 +19,8 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
 
 INCLUDE(cmake/base.cmake)
-INCLUDE(cmake/python.cmake)
+INCLUDE(cmake/hpp.cmake)
+INCLUDE(cmake/hpp/python.cmake)
 
 FIND_PROGRAM(XACRO_EXECUTABLE xacro)
 
@@ -66,11 +67,10 @@ ENDMACRO(GENERATE_URDF_FILE FILENAME CONFIGURE)
 SET(PROJECT_NAME hpp-universal-robot)
 SET(PROJECT_DESCRIPTION
   "Data specific to ur5 and 10 robots for hpp-corbaserver")
-SET(PROJECT_URL "https://github.com/humanoid-path-planner/${PROJECT_NAME}")
 
-SETUP_PROJECT()
+SETUP_HPP_PROJECT()
 
-FINDPYTHON()
+HPP_FINDPYTHON()
 
 ADD_REQUIRED_DEPENDENCY ("ur_description >= 1")
 
@@ -128,4 +128,4 @@ INSTALL(FILES
   DESTINATION ${UR_DESCRIPTION_DATAROOTDIR}/rviz
 )
 
-SETUP_PROJECT_FINALIZE()
+SETUP_HPP_PROJECT_FINALIZE()
