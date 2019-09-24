@@ -20,7 +20,7 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
 
 INCLUDE(cmake/base.cmake)
 INCLUDE(cmake/hpp.cmake)
-INCLUDE(cmake/hpp/python.cmake)
+INCLUDE(cmake/python.cmake)
 
 SET(PROJECT_NAME hpp-universal-robot)
 SET(PROJECT_DESCRIPTION
@@ -28,7 +28,7 @@ SET(PROJECT_DESCRIPTION
 
 SETUP_HPP_PROJECT()
 
-HPP_FINDPYTHON()
+FINDPYTHON()
 
 ADD_REQUIRED_DEPENDENCY ("example-robot-data >= 2.2.0")
 
