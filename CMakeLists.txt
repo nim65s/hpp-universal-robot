@@ -30,7 +30,7 @@ SETUP_HPP_PROJECT()
 
 FINDPYTHON()
 
-ADD_REQUIRED_DEPENDENCY ("example-robot-data >= 2.2.0")
+ADD_REQUIRED_DEPENDENCY ("example-robot-data >= 2.5.1")
 
 # Install files
 SET (UR_DESCRIPTION_DATAROOTDIR ${CMAKE_INSTALL_PREFIX}/share/example-robot-data/ur_description)
@@ -53,12 +53,6 @@ INSTALL(FILES
   ${PROJECT_SOURCE_DIR}/share/ur_description/srdf/ur5_joint_limited_robot.srdf
   ${PROJECT_SOURCE_DIR}/share/ur_description/srdf/ur5_gripper.srdf
   DESTINATION ${UR_DESCRIPTION_DATAROOTDIR}/srdf
-)
-
-INSTALL(FILES
-  ${PROJECT_SOURCE_DIR}/share/ur_description/urdf/ur3_gripper.urdf
-  ${PROJECT_SOURCE_DIR}/share/ur_description/urdf/ur5_gripper.urdf
-  DESTINATION ${UR_DESCRIPTION_DATAROOTDIR}/urdf
 )
 
 INSTALL(FILES
