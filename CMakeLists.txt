@@ -29,10 +29,10 @@ PROJECT(${PROJECT_NAME} ${PROJECT_ARGS})
 
 FINDPYTHON()
 
-ADD_REQUIRED_DEPENDENCY ("example-robot-data >= 2.5.1")
+ADD_REQUIRED_DEPENDENCY ("example-robot-data >= 3.0.0")
 
 # Install files
-SET (UR_DESCRIPTION_DATAROOTDIR ${CMAKE_INSTALL_PREFIX}/share/example-robot-data/ur_description)
+SET (UR_DESCRIPTION_DATAROOTDIR ${CMAKE_INSTALL_PREFIX}/share/example-robot-data/robots/ur_description)
 
 INSTALL(FILES
   ${PROJECT_SOURCE_DIR}/src/hpp/corbaserver/ur5/robot.py
