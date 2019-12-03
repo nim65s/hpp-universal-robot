@@ -47,14 +47,6 @@ INSTALL(FILES
 )
 
 INSTALL(FILES
-  ${PROJECT_SOURCE_DIR}/share/ur_description/srdf/ur3_gripper.srdf
-  ${PROJECT_SOURCE_DIR}/share/ur_description/srdf/ur5.srdf
-  ${PROJECT_SOURCE_DIR}/share/ur_description/srdf/ur5_joint_limited_robot.srdf
-  ${PROJECT_SOURCE_DIR}/share/ur_description/srdf/ur5_gripper.srdf
-  DESTINATION ${UR_DESCRIPTION_DATAROOTDIR}/srdf
-)
-
-INSTALL(FILES
   ${PROJECT_SOURCE_DIR}/launch/ur5.launch
   DESTINATION ${UR_DESCRIPTION_DATAROOTDIR}/launch
 )
