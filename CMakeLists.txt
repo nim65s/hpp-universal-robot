@@ -32,8 +32,6 @@ FINDPYTHON()
 ADD_REQUIRED_DEPENDENCY ("example-robot-data >= 3.0.0")
 
 # Install files
-SET (UR_DESCRIPTION_DATAROOTDIR ${CMAKE_INSTALL_PREFIX}/share/example-robot-data/robots/ur_description)
-
 INSTALL(FILES
   ${PROJECT_SOURCE_DIR}/src/hpp/corbaserver/ur5/robot.py
   ${PROJECT_SOURCE_DIR}/src/hpp/corbaserver/ur5/__init__.py
@@ -44,14 +42,4 @@ INSTALL(FILES
   ${PROJECT_SOURCE_DIR}/src/hpp/corbaserver/manipulation/ur5/robot.py
   ${PROJECT_SOURCE_DIR}/src/hpp/corbaserver/manipulation/ur5/__init__.py
   DESTINATION ${PYTHON_SITELIB}/hpp/corbaserver/manipulation/ur5
-)
-
-INSTALL(FILES
-  ${PROJECT_SOURCE_DIR}/launch/ur5.launch
-  DESTINATION ${UR_DESCRIPTION_DATAROOTDIR}/launch
-)
-
-INSTALL(FILES
-  ${PROJECT_SOURCE_DIR}/share/rviz/config.rviz
-  DESTINATION ${UR_DESCRIPTION_DATAROOTDIR}/rviz
 )
