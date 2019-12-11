@@ -19,10 +19,8 @@
 from hpp.corbaserver.robot import Robot as Parent
 
 class Robot (Parent):
-    packageName = "ur_description"
-    urdfName = "ur5_joint_limited_robot"
-    urdfSuffix = ""
-    srdfSuffix = ""
+    urdfFilename = "package://example-robot-data/robots/ur_description/urdf/ur5_joint_limited_robot.urdf"
+    srdfFilename = "package://example-robot-data/robots/ur_description/srdf/ur5_joint_limited_robot.srdf"
 
     def __init__ (self, robotName, load = True, rootJointType = "anchor"):
         Parent.__init__ (self, robotName, rootJointType, load)
