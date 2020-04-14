@@ -1,5 +1,5 @@
-# Copyright (c) 2014 CNRS
-# Author: Florent Lamiraux
+# Copyright (c) 2014, 2020 CNRS
+# Author: Florent Lamiraux, Guilhem Saurel
 #
 # This file is part of hpp-universal-robot.
 # hpp-universal-robot is free software: you can redistribute it
@@ -15,11 +15,12 @@
 # hpp-universal-robot.  If not, see
 # <http://www.gnu.org/licenses/>.
 
-# Requires at least CMake 2.6 to configure the package.
-CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
+CMAKE_MINIMUM_REQUIRED(VERSION 3.1)
 
 SET(PROJECT_NAME hpp-universal-robot)
 SET(PROJECT_DESCRIPTION "Data specific to ur5 and 10 robots for hpp-corbaserver")
+
+SET(PROJECT_USE_CMAKE_EXPORT TRUE)
 
 INCLUDE(cmake/hpp.cmake)
 INCLUDE(cmake/python.cmake)
@@ -29,17 +30,10 @@ PROJECT(${PROJECT_NAME} ${PROJECT_ARGS})
 
 FINDPYTHON()
 
-ADD_REQUIRED_DEPENDENCY ("example-robot-data >= 3.0.0")
+ADD_PROJECT_DEPENDENCY(example-robot-data)
 
-# Install files
-INSTALL(FILES
-  ${PROJECT_SOURCE_DIR}/src/hpp/corbaserver/ur5/robot.py
-  ${PROJECT_SOURCE_DIR}/src/hpp/corbaserver/ur5/__init__.py
-  DESTINATION ${PYTHON_SITELIB}/hpp/corbaserver/ur5
-)
+ADD_LIBRARY(${PROJECT_NAME} INTERFACE)
+TARGET_LINK_LIBRARIES(${PROJECT_NAME} INTERFACE example-robot-data::example-robot-data)
+INSTALL(TARGETS ${PROJECT_NAME} EXPORT ${TARGETS_EXPORT_NAME} DESTINATION lib)
 
-INSTALL(FILES
-  ${PROJECT_SOURCE_DIR}/src/hpp/corbaserver/manipulation/ur5/robot.py
-  ${PROJECT_SOURCE_DIR}/src/hpp/corbaserver/manipulation/ur5/__init__.py
-  DESTINATION ${PYTHON_SITELIB}/hpp/corbaserver/manipulation/ur5
-)
+ADD_SUBDIRECTORY(src)
