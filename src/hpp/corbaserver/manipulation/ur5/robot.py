@@ -18,18 +18,22 @@
 
 from hpp.corbaserver.manipulation.robot import Robot as Parent
 
-class Robot (Parent):
-    urdfFilename = "package://example-robot-data/robots/ur_description/urdf/ur5_joint_limited_robot.urdf"
-    srdfFilename = "package://example-robot-data/robots/ur_description/srdf/ur5_joint_limited_robot.srdf"
+PACKAGE = "package://example-robot-data/robots/ur_description/"
+
+
+class Robot(Parent):
+    urdfFilename = PACKAGE + "urdf/ur5_joint_limited_robot.urdf"
+    srdfFilename = PACKAGE + "srdf/ur5_joint_limited_robot.srdf"
     rootJointType = "anchor"
 
-    def __init__ (self, compositeName, robotName, load = True,
-                  rootJointType = rootJointType):
-        Parent.__init__ (self, compositeName, robotName, rootJointType, load)
+    def __init__(
+        self, compositeName, robotName, load=True, rootJointType=rootJointType
+    ):
+        Parent.__init__(self, compositeName, robotName, rootJointType, load)
         self.rightWrist = "wrist_3_joint"
-        self.leftWrist  = "wrist_3_joint"
+        self.leftWrist = "wrist_3_joint"
         self.endEffector = "ee_fixed_joint"
 
-    def getInitialConfig (self):
-        q = 6*[0]
+    def getInitialConfig(self):
+        q = 6 * [0]
         return q
