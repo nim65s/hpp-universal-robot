@@ -1,6 +1,6 @@
 <package>
   <name>hpp_universal_robot</name>
-  <version>4.15.0</version>
+  <version>4.15.1</version>
   <description>
     Data specific to robots ur5 and ur10 for hpp-corbaserver.
   </description>
