@@ -20,6 +20,9 @@ set(PROJECT_DESCRIPTION
 
 set(PROJECT_USE_CMAKE_EXPORT TRUE)
 
+option(BUILD_PYTHON_INTERFACE "Build the python bindings" ON)
+option(INSTALL_PYTHON_INTERFACE_ONLY "Install *ONLY* the python bindings" OFF)
+
 # Check if the submodule cmake have been initialized
 set(JRL_CMAKE_MODULES "${CMAKE_CURRENT_LIST_DIR}/cmake")
 if(EXISTS "${JRL_CMAKE_MODULES}/base.cmake")
@@ -57,18 +60,25 @@ include("${JRL_CMAKE_MODULES}/python.cmake")
 compute_project_args(PROJECT_ARGS LANGUAGES CXX)
 project(${PROJECT_NAME} ${PROJECT_ARGS})
 
-findpython()
+if(BUILD_PYTHON_INTERFACE)
+  findpython(REQUIRED)
+endif()
 
 add_project_dependency(example-robot-data)
 
 add_library(${PROJECT_NAME} INTERFACE)
 target_link_libraries(${PROJECT_NAME}
                       INTERFACE example-robot-data::example-robot-data)
-install(
-  TARGETS ${PROJECT_NAME}
-  EXPORT ${TARGETS_EXPORT_NAME}
-  DESTINATION lib)
+
+if(NOT INSTALL_PYTHON_INTERFACE_ONLY)
+  install(
+    TARGETS ${PROJECT_NAME}
+    EXPORT ${TARGETS_EXPORT_NAME}
+    DESTINATION lib)
+endif()
 
 add_subdirectory(src)
 
-install(FILES package.xml DESTINATION share/${PROJECT_NAME})
+if(NOT INSTALL_PYTHON_INTERFACE_ONLY)
+  install(FILES package.xml DESTINATION share/${PROJECT_NAME})
+endif()
