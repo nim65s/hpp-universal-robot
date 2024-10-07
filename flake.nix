@@ -25,6 +25,7 @@
           packages = {
             default = self'.packages.hpp-universal-robot;
             hpp-universal-robot = pkgs.python3Packages.hpp-universal-robot.overrideAttrs (_: {
+              patches = [];
               src = pkgs.lib.fileset.toSource {
                 root = ./.;
                 fileset = pkgs.lib.fileset.unions [
